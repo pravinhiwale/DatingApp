@@ -1,0 +1,10 @@
+@database=devsales
+Get http://Localhost:5000/api/values/1 HTTP/1.1
+//database={{database}}
+
+###
+
+@database=devsales
+Get http://Localhost:5000/api/values/1 HTTP/1.1
+database={{database}}
+###
