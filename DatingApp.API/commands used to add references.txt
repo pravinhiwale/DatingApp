@@ -1,0 +1,78 @@
+dotnet run
+
+dotnet watch run
+
+nuget Microsoft.EntityFrameworCore
+
+nuget Microsoft.EntityFrameworkCore.sqllite
+
+dotnet tool install --global dotnet-ef
+
+dotnet ef -h  (shows commands)
+
+dotnet ef mighrations - h (contextual help)
+
+dotnet ef migrations add InitialCreate  
+
+nuget Microsoft.EntityFrameworkCore.Design
+
+ef migrations remove 
+
+dotnet ef migrations add "UserEntity"
+dotnet ef database update
+
+
+tools installed 
+DB Browser for SQL lite 
+
+
+Extensions installed in Visual Studio
+1>Angular Files
+2> Angular Language Service
+3> angular2- switcher
+4> c#extensions
+5> Intellisense for CSS class names
+6> Angular Snippets
+7> Auto Import - ES6, TS,JSX,TSX
+8>
+
+enable CORS  ( Cross Origin Resource Sharing)
+
+What is "same origin"?
+Two URLs have the same origin if they have identical schemes, hosts, and ports. (RFC 6454)
+
+These two URLs have the same origin:
+
+http://example.com/foo.html
+http://example.com/bar.html
+These URLs have different origins than the previous two:
+
+http://example.net - Different domain
+http://example.com:9000/foo.html - Different port
+https://example.com/foo.html - Different scheme
+http://www.example.com/foo.html - Different subdomain
+
+
+Hashing and Salting a password
+
+hashing sha512
+
+1> Hashing a password is a one way process , we take our password and hashes and it scrambles the password and store it in database
+  now we need to take into consideration a worst case scenario and that somebody is hacked into our database  and downloaded all usernames and all password hashes and in case of weak passwords it is easy to decrypt
+and another downside to this approach of just storing hashes on their own is if somebody uses same password it  gives same hash 
+a complex password is difficult to hack
+
+so hashing is definitely good but not good enough on its own , certainly not good enough for weak passwords
+so what we also do is in addition to hashing add a salt to the password , salt is randomly generated and added to the password before hashing takes place
+so when we add a random salt to a hash it ensures the same password will produce many different hashes and the salt is stored in the database together with the result of the has function and salting a hash
+is good for several reasons , first of all it greatly increases the difficulty or cost of pre computed attacks included the rainbow tables we just looked at
+salting also make sure at the same password does not result in the same hash
+
+
+
+
+
+
+
+
+

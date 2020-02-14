@@ -1,10 +1,28 @@
 @database=devsales
+@Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyIiwidW5pcXVlX25hbWUiOiJqb2huIiwibmJmIjoxNTgxNTc1MzYwLCJleHAiOjE1ODI0MzkzNjAsImlhdCI6MTU4MTU3NTM2MH0.T2ZH9YYDz0z7YuRrzLVYCq40ks112-Dd73JhugNryjC14IW5TT5DeZyHd8sghTBDruMsn79nzkTYzOJNyt8hsA
 Get http://Localhost:5000/api/values/1 HTTP/1.1
 //database={{database}}
 
 ###
 
-@database=devsales
 Get http://Localhost:5000/api/values/1 HTTP/1.1
-database={{database}}
+Authorization: {{Authorization}}
 ###
+
+
+POST http://Localhost:5000/api/auth/register  
+Content-Type: application/json
+
+{
+   "username":"John",
+   "password":"password" 
+}
+###
+
+POST http://Localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+   "username":"John",
+   "password":"password" 
+}

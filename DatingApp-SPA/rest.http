@@ -1,0 +1,18 @@
+# @database =DevSales_Pravin
+# @auth=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRldnNhbGVzQGZvcmVjYXN0aW5nY2FmZWRldi5jb20iLCJzdWIiOiJkZXZzYWxlc0Bmb3JlY2FzdGluZ2NhZmVkZXYuY29tIiwicm9sZSI6WyJVc2VyIiwiRm9yZWNhc3RpbmcgTWFuYWdlciIsIkVsZXZhdGUgQWRtaW5pc3RyYXRpb24iLCJGb3JlY2FzdCBNYW5hZ2VyIFJvbGUgMyBNYXJrZXQgUHJvZmlsZSBPbmx5IiwiRmFjaWxpdHkgTWFuYWdlciJdLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxIiwiVXNlcklkIjoiMSIsImNsaWVudGRvbWFpbiI6ImZvcmVjYXN0aW5nY2FmZSIsInByb2R1Y3RuYW1lIjoiRm9yZWNhc3RpbmdDYWZlRGV2TG9jYWwiLCJzdGFja3RyYWNlIjoiMSIsImlzcyI6IjEyNy4wLjAuMSIsImF1ZCI6IlptOXlaV05oYzNScGJtZGpZV1psIiwiZXhwIjoxNTgxNDg2ODQyLCJuYmYiOjE1ODA4ODIwNDJ9.nsTKI8j74SRkJsB1Jk8zLEiPTb3IREXQqZXrGJDLZWU
+# GET http://forecastingcafe.forecastingdevlocal.com/api/connect/budgets/
+# Authorization:{{auth}}
+# database:{{database}}
+
+# ###
+# GET http://fcdev.elevatedev.com/forecastingcafe/api/connect/ping 
+
+# ###
+# POST http://Localhost:5000/api/auth/register  
+# Content-Type: application/json
+
+# {
+#    "username":"John",
+#    "password":"pas" 
+# }
+
