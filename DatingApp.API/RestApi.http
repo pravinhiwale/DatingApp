@@ -1,5 +1,5 @@
 @database=devsales
-@Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyIiwidW5pcXVlX25hbWUiOiJqb2huIiwibmJmIjoxNTgxNTc1MzYwLCJleHAiOjE1ODI0MzkzNjAsImlhdCI6MTU4MTU3NTM2MH0.T2ZH9YYDz0z7YuRrzLVYCq40ks112-Dd73JhugNryjC14IW5TT5DeZyHd8sghTBDruMsn79nzkTYzOJNyt8hsA
+@Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5IiwidW5pcXVlX25hbWUiOiJwYXRlbCIsIm5iZiI6MTU4MTgyNTg0NCwiZXhwIjoxNTgyNjg5ODQ0LCJpYXQiOjE1ODE4MjU4NDR9.jfTA3EJN1pn0HWspGuy2tp6c7ZCAx3X8iuNjOd5ZuzURi7_XHyImPC8UeuEza2X6WofPCrRsW-BAdpd7HqXppg
 Get http://Localhost:5000/api/values/1 HTTP/1.1
 //database={{database}}
 
@@ -26,3 +26,11 @@ Content-Type: application/json
    "username":"John",
    "password":"password" 
 }
+
+###
+Get http://Localhost:5000/api/users/1
+Authorization: {{Authorization}}
+
+###
+Get http://Localhost:5000/api/users?pageNumber=2&pageSize=3
+Authorization: {{Authorization}}

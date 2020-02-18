@@ -21,7 +21,7 @@ ef migrations remove
 dotnet ef migrations add "UserEntity"
 dotnet ef database update
 
-
+ng g guard auth --SkipTests
 tools installed 
 DB Browser for SQL lite 
 
@@ -73,6 +73,24 @@ salting also make sure at the same password does not result in the same hash
 
 
 
+dotnet ef migrations add extendedUserClass
+
+json generator
 
 
+cloudinary account
+pravinhiwale@gmail.com
+Pra_Ben8079
 
+
+BehaviourSubject
+ Is a type of subject (which is a type of Observable)
+  Can be subscribed to
+  Subscribers can receive updated results
+  A subject is an observer(so we can send values to it)
+
+  BehaviourSubject
+    Needs an initial value(must always return a value on subscription)
+    On subscription returns last value of subject
+    can use the getValue() method in non observable code
+  

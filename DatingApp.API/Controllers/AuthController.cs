@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Dtos;
 using DatingApp.API.Models;
@@ -19,13 +20,14 @@ namespace DatingApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
-
-          _repo = repo;
+            _mapper = mapper;
+            _repo = repo;
             _config = config;
-        // ApiController forces us to use attributed based routing
+            // ApiController forces us to use attributed based routing
             // 2. it also does the DTO validations ( i guess it can do other validations as well)
             //3 . it also automatically picks up objects from Body  so no need to give [FromBody] hint to parameters
 
@@ -40,12 +42,11 @@ namespace DatingApp.API.Controllers
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
             if (await _repo.UserExists(userForRegisterDto.Username))
                 return BadRequest("username Already Exists");
-            var userToCreate = new User
-            {
-                UserName = userForRegisterDto.Username
-            };
+            var userToCreate =_mapper.Map<User>(userForRegisterDto);
+
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
-            return StatusCode(201);
+            var userToReturn =_mapper.Map<UserForDetailedDto>(createdUser);
+            return CreatedAtRoute("GetUser", new {controller="Users",id = createdUser.Id},userToReturn);
         }
 
         [HttpPost("login")]
@@ -61,14 +62,15 @@ namespace DatingApp.API.Controllers
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescriptor = new SecurityTokenDescriptor
-                                        {
-                                            Subject = new ClaimsIdentity(claims),
-                                            Expires = DateTime.Now.AddDays(10),
-                                            SigningCredentials = creds
-                                        };
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(10),
+                SigningCredentials = creds
+            };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return Ok(new { token = tokenHandler.WriteToken(token) });
+            var user = _mapper.Map<UsersForListDto>(userFromRepo);
+            return Ok(new { token = tokenHandler.WriteToken(token) ,user});
         }
     }
 }

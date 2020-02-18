@@ -8,13 +8,14 @@ namespace DatingApp.API.Data
     public class AuthRepository : IAuthRepository
     {
         private readonly DataContext _context;
+
         public AuthRepository(DataContext context)
         { _context = context;}
 
         public async Task<User> Login(string username, string password)
         {
             //throw new System.NotImplementedException();
-            var user=await _context.Users.FirstOrDefaultAsync(x=>x.UserName==username);
+            var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(x => x.UserName == username);
             if (user==null) return null;
 
             if(!VerifyPasswordHash(password,user.PasswordHash,user.PasswordSalt))
