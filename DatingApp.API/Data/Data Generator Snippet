@@ -63,3 +63,10 @@ Snippet for NEXT JSON Generator site at https://next.json-generator.com
   }
  } 
 ]
+
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+git remote -v
+/*output would be below
+origin  https://github.com/pravinhiwale/datingapp.git (fetch)
+origin  https://github.com/pravinhiwale/datingapp.git (push)
+*/

@@ -30,6 +30,7 @@ import { PreventUnSavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule  } from 'ng2-file-upload';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { ListsResolver } from './_resolvers/list.resolver';
 
 //import {FileUploader} from 'ng2-file-upload/file-upload';
 
@@ -70,8 +71,8 @@ export function tokenGetter() {
       JwtModule.forRoot({
          config: {
             tokenGetter,
-            whitelistedDomains:['localhost:5000'],
-            blacklistedRoutes:['localhost:5000/api/auth']
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
          }
       })
    ],
@@ -81,7 +82,8 @@ export function tokenGetter() {
       MemberDetailResolver,
       MemberListResolver,
       MemberEditResolver,
-      PreventUnSavedChanges
+      PreventUnSavedChanges,
+      ListsResolver
    ],
    bootstrap: [
       AppComponent
