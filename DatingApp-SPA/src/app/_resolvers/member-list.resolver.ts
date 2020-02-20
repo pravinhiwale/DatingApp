@@ -24,7 +24,7 @@ export class MemberListResolver implements Resolve<User[]> {
 
     constructor(private userService: UserService, private router: Router,
                 private alertify: AlertifyService) {
-       
+
     }
 
 }

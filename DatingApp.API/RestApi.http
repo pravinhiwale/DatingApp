@@ -28,9 +28,19 @@ Content-Type: application/json
 }
 
 ###
-Get http://Localhost:5000/api/users/1
+Get http://Localhost:5000/api/users/
 Authorization: {{Authorization}}
 
 ###
 Get http://Localhost:5000/api/users?pageNumber=2&pageSize=3
 Authorization: {{Authorization}}
+
+###
+POST http://Localhost:5000/api/users/9/messages  HTTP/1.1
+Authorization: {{Authorization}}
+Content-Type: application/json
+
+{
+   "recipientId": 1,
+   "content": "Hi hello how are you"
+}

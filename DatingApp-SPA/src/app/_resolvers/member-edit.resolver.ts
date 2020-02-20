@@ -22,7 +22,7 @@ export class MemberEditResolver implements Resolve<User> {
 
     constructor(private userService: UserService, private router: Router,
                 private alertify: AlertifyService, private authService: AuthService) {
-       
+
     }
 
 }

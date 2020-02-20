@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/Alertify.service';
 import { ActivatedRoute } from '@angular/router';
-//import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from 'ngx-gallery';
+import { TabsetComponent } from 'ngx-bootstrap';
+// import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from 'ngx-gallery';
 
 @Component({
   selector: 'app-member-detail',
@@ -12,16 +13,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MemberDetailComponent implements OnInit {
   user: User;
-  //galleryOptions: NgxGalleryOptions[];
-  //galleryImages: NgxGalleryImage[]; 
+  @ViewChild('memberTabs', {static: true }) memberTabs: TabsetComponent;
+  // galleryOptions: NgxGalleryOptions[];
+  // galleryImages: NgxGalleryImage[];
   constructor(private userService: UserService, private alertify: AlertifyService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     // this.loadUser();
     this.route.data.subscribe(data => {
-      this.user = data['user'];
+      this.user = data.user;
     });
+    this.route.queryParams.subscribe(params => {
+      const SelectedTab = params.tab;
+      this.memberTabs.tabs[SelectedTab > 0 ? SelectedTab : 0].active = true;
+      });
     // this.galleryOptions = [
     // {
     //   width: '500px',
@@ -31,7 +37,7 @@ export class MemberDetailComponent implements OnInit {
     //   imageAnimation: NgxGalleryAnimation.Slide,
     //   preview: false
     // }];
-    //this.galleryImages = this.getImages();
+    // this.galleryImages = this.getImages();
 
   }
 // loadUser() {
@@ -42,7 +48,7 @@ export class MemberDetailComponent implements OnInit {
 //   })
 //   ;
 // }
-getImages(){
+getImages() {
   const imageUrls = [];
   for (const photo of this.user.photos) {
     imageUrls.push(
@@ -56,4 +62,9 @@ getImages(){
   }
   return imageUrls;
 }
+
+selectTab(tabId: number) {
+  this.memberTabs.tabs[tabId].active = true;
+}
+
 }
